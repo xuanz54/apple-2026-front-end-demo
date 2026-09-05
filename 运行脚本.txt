@@ -1,0 +1,4 @@
+python -m http.server 4173 --bind 127.0.0.1
+
+$pid4173 = (Get-NetTCPConnection -LocalPort 4173 -State Listen).OwningProcess
+Stop-Process -Id $pid4173

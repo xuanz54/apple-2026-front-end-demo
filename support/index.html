@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="查找产品、购物袋与模拟结账帮助。"><title>支持 - Apple</title><link rel="icon" href="../assets/apple-logo.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../info.css"></head>
+<body><a class="skip-link" href="#main">跳到主要内容</a><header class="info-header"><nav class="info-nav" aria-label="主导航"><a class="info-home" href="../" aria-label="Apple 首页"><img src="../assets/apple-logo.svg" alt=""></a><div class="info-links"><a href="../mac/">Mac</a><a href="../iphone/">iPhone</a><a href="../products/">产品</a><a href="../values/">理念</a><a href="../support/" aria-current="page">支持</a><a href="../privacy/">隐私</a></div></nav></header>
+  <main id="main">
+    <section class="page-hero"><div class="page-hero-inner"><p class="hero-kicker">Apple 支持</p><h1>需要帮助，<br>从这里开始。</h1><p>搜索产品、购物袋、配送和模拟结账相关主题。这里的内容与操作全部留在当前演示站内。</p></div></section>
+    <section class="support-tools"><div class="page-section"><div class="support-search"><i data-lucide="search" aria-hidden="true"></i><input id="supportSearch" type="search" placeholder="搜索帮助主题" aria-label="搜索帮助主题"></div><p class="support-count" id="supportCount" aria-live="polite"></p>
+      <div class="topic-grid" id="topicGrid">
+        <article class="topic" data-search="iphone 17 pro 手机 相机 购买"><i data-lucide="smartphone"></i><h3>iPhone</h3><p>了解 iPhone 17 Pro、选择容量与颜色，或进入站内购买配置。</p></article>
+        <article class="topic" data-search="mac macbook air m5 电脑 购买"><i data-lucide="laptop"></i><h3>Mac</h3><p>查看 MacBook Air M5 的核心能力、规格与购买入口。</p></article>
+        <article class="topic" data-search="ipad air m4 平板 pencil 购买"><i data-lucide="tablet"></i><h3>iPad</h3><p>了解 iPad Air M4，以及适合学习、创作与多任务的配置。</p></article>
+        <article class="topic" data-search="watch series 11 手表 健康 购买"><i data-lucide="watch"></i><h3>Apple Watch</h3><p>探索健康、运动与连接功能，并选择表款与尺寸。</p></article>
+        <article class="topic" data-search="airpods pro 3 耳机 降噪 心率 购买"><i data-lucide="headphones"></i><h3>AirPods</h3><p>了解主动降噪、心率感测和可预览的外观选项。</p></article>
+        <article class="topic" data-search="购物袋 购物车 数量 删除 保存 浏览器 localstorage"><i data-lucide="shopping-bag"></i><h3>购物袋</h3><p>修改商品数量、移除商品，并在当前浏览器中保留选择。</p></article>
+        <article class="topic" data-search="结账 订单 地址 付款 模拟"><i data-lucide="credit-card"></i><h3>模拟结账</h3><p>填写演示配送信息并创建模拟订单，不会发起真实付款。</p></article>
+        <article class="topic" data-search="比较 产品 选择 推荐 机型"><i data-lucide="columns-3"></i><h3>产品比较</h3><p>最多并排选择三款产品，对照价格、场景与代表功能。</p></article>
+        <article class="topic" data-search="隐私 数据 cookie localstorage 本地 浏览器"><i data-lucide="shield-check"></i><h3>隐私与数据</h3><p>了解购物袋如何保存在当前浏览器，以及本站不会上传哪些信息。</p></article>
+      </div><p class="empty-results" id="emptyResults" hidden>没有找到相关主题，请尝试产品名称或“购物袋”。</p>
+    </div></section>
+    <section class="page-section" aria-labelledby="faq-title"><div class="section-heading"><h2 id="faq-title">常见问题。</h2><p>关于这个纯前端演示站，几件需要提前说明的事。</p></div><div class="faq-list">
+      <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-1">为什么刷新页面后购物袋还在？<i data-lucide="plus"></i></button><div class="faq-answer" id="faq-1" hidden>购物袋存放在当前浏览器配置的 localStorage 中。相同网址在同一浏览器再次打开时会读取之前的商品，其他浏览器或其他设备不会共享这些数据。</div></article>
+      <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2">结账会产生真实订单吗？<i data-lucide="plus"></i></button><div class="faq-answer" id="faq-2" hidden>不会。结账页只在当前页面生成模拟订单号，不连接支付、库存或配送系统，也不会把表单内容上传到服务器。</div></article>
+      <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3">在哪里比较不同产品？<i data-lucide="plus"></i></button><div class="faq-answer" id="faq-3" hidden>进入“产品”页面，在“比较所有产品”区域选择一到三款设备，即可查看核心能力、适用场景和起售价。</div></article>
+      <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4">动画可以关闭吗？<i data-lucide="plus"></i></button><div class="faq-answer" id="faq-4" hidden>可以。网站会读取系统的“减少动态效果”偏好；开启后，滚动淡入、图片缩放和过渡效果会停用，内容会直接显示。</div></article>
+    </div></section>
+  </main>
+  <footer class="info-footer"><div class="footer-inner"><div class="footer-top"><img src="../assets/apple-logo.svg" alt=""><span>支持</span></div><nav class="footer-nav" aria-label="页脚导航"><a href="../products/">产品</a><a href="../values/">理念</a><a href="../support/" aria-current="page">支持</a><a href="../privacy/">隐私</a></nav><p>Copyright © 2026 Apple Inc. 保留所有权利。此页面为纯前端学习演示。</p></div></footer><script src="https://unpkg.com/lucide@latest"></script><script src="../info.js"></script>
+</body></html>
