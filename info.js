@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const tr = (key, vars, fallback = key) => window.t ? window.t(key, vars) : fallback;
+  const translate = (value) => window.translateText ? window.translateText(value) : value;
   if (window.lucide) lucide.createIcons();
 
   document.body.classList.add('motion-ready');
@@ -58,45 +60,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!compareGrid) return;
     compareGrid.replaceChildren();
     compareGrid.style.setProperty('--compare-count', String(selectedProducts.length));
-    compareGrid.append(createCell('compare-label', '产品'));
+    compareGrid.append(createCell('compare-label', tr('common.product', {}, '产品')));
     selectedProducts.forEach((key) => {
       const product = comparisonData[key];
       const head = document.createElement('div');
       head.className = 'compare-product-head';
       const image = document.createElement('img'); image.src = product.image; image.alt = '';
       const title = document.createElement('h3'); title.textContent = product.name;
-      const price = document.createElement('p'); price.textContent = product.price;
+      const price = document.createElement('p'); price.textContent = translate(product.price);
       head.append(image, title, price);
       compareGrid.append(createCell('', head));
     });
-    [['核心', 'chip'], ['适合场景', 'use'], ['便携方式', 'portability'], ['代表功能', 'feature']].forEach(([label, field]) => {
-      compareGrid.append(createCell('compare-label', label));
-      selectedProducts.forEach((key) => compareGrid.append(createCell('compare-value', comparisonData[key][field])));
+    [['compare.core', 'chip'], ['compare.use', 'use'], ['compare.portability', 'portability'], ['compare.feature', 'feature']].forEach(([label, field]) => {
+      compareGrid.append(createCell('compare-label', tr(label, {}, label)));
+      selectedProducts.forEach((key) => compareGrid.append(createCell('compare-value', translate(comparisonData[key][field]))));
     });
-    compareGrid.append(createCell('compare-label', '进一步了解'));
+    compareGrid.append(createCell('compare-label', tr('compare.more', {}, '进一步了解')));
     selectedProducts.forEach((key) => {
       const product = comparisonData[key];
       const actions = document.createElement('div'); actions.className = 'compare-action';
-      const detail = document.createElement('a'); detail.className = 'inline-link'; detail.href = product.detail; detail.textContent = '了解';
-      const buy = document.createElement('a'); buy.className = 'inline-link'; buy.href = product.buy; buy.textContent = '购买';
+      const detail = document.createElement('a'); detail.className = 'inline-link'; detail.href = product.detail; detail.textContent = tr('common.learn', {}, '了解');
+      const buy = document.createElement('a'); buy.className = 'inline-link'; buy.href = product.buy; buy.textContent = tr('common.buy', {}, '购买');
       actions.append(detail, buy);
       compareGrid.append(createCell('', actions));
     });
-    compareNote.textContent = `已选择 ${selectedProducts.length} 款产品，最多可同时比较 3 款。`;
+    compareNote.textContent = tr('compare.note', { count: selectedProducts.length }, `已选择 ${selectedProducts.length} 款产品，最多可同时比较 3 款。`);
   };
   selectButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const key = button.dataset.product;
       if (selectedProducts.includes(key)) {
         if (selectedProducts.length === 1) {
-          compareNote.textContent = '请至少保留一款产品。';
+          compareNote.textContent = tr('compare.keepOne', {}, '请至少保留一款产品。');
           return;
         }
         selectedProducts = selectedProducts.filter((item) => item !== key);
         button.setAttribute('aria-pressed', 'false');
       } else {
         if (selectedProducts.length === 3) {
-          compareNote.textContent = '最多可同时比较 3 款，请先取消一款。';
+          compareNote.textContent = tr('compare.max', {}, '最多可同时比较 3 款，请先取消一款。');
           return;
         }
         selectedProducts.push(key);
@@ -106,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   renderComparison();
+  document.addEventListener('i18n:rendered', () => {
+    renderComparison();
+    if (supportSearch) supportSearch.dispatchEvent(new Event('input'));
+  });
 
   const supportSearch = document.querySelector('#supportSearch');
   const supportCount = document.querySelector('#supportCount');
@@ -120,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         topic.hidden = !matches;
         if (matches) visible += 1;
       });
-      supportCount.textContent = query ? `找到 ${visible} 个相关主题` : `共 ${topics.length} 个帮助主题`;
+      supportCount.textContent = query ? tr('support.found', { count: visible }, `找到 ${visible} 个相关主题`) : tr('support.count', { count: topics.length }, `共 ${topics.length} 个帮助主题`);
       emptyResults.hidden = visible !== 0;
     };
     supportSearch.addEventListener('input', filterTopics);
@@ -145,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearBag.addEventListener('click', () => {
       localStorage.removeItem(storageKey);
       clearBag.disabled = true;
-      clearStatus.textContent = '当前浏览器的购物袋数据已清除。';
+      clearStatus.textContent = tr('privacy.cleared', {}, '当前浏览器的购物袋数据已清除。');
     });
   }
 });

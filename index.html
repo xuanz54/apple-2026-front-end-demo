@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260830-2">
+  <link rel="stylesheet" href="styles.css?v=20260905-8">
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主要内容</a>
+  <a class="skip-link" href="#main" data-i18n="common.skip">跳到主要内容</a>
   <header class="site-header" id="top">
-    <nav class="nav-wrap" aria-label="主导航">
+    <nav class="nav-wrap" aria-label="主导航" data-i18n-attr="aria-label:nav.main">
       <a class="brand" href="./" aria-label="Apple 首页"><img class="apple-logo" src="assets/apple-logo.svg" alt=""></a>
       <div class="desktop-nav">
         <a href="#products">商店</a><a href="mac/">Mac</a><a href="ipad/">iPad</a><a href="iphone/">iPhone</a><a href="watch/">Watch</a><a href="airpods/">AirPods</a><a href="#services-title">配件</a>
@@ -177,7 +177,11 @@
     </section>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/i18next.min.js?v=23.16.8"></script>
+  <script src="vendor/opencc-js.full.js?v=1.0.5"></script>
+  <script src="i18n.js?v=20260905-9"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="script.js?v=20260830-2"></script>
+  <script src="script.js?v=20260905-9"></script>
+  <script src="preferences.js?v=20260905-8"></script>
 </body>
 </html>

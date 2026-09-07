@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const tr = (key, vars, fallback = key) => window.t ? window.t(key, vars) : fallback;
+  const translate = (value) => window.translateText ? window.translateText(value) : value;
+  const productNameKey = { iphone: 'products.iphone', mac: 'products.mac', ipad: 'products.ipad', watch: 'products.watch', airpods: 'products.airpods' };
+  const colorKey = { '深空黑': 'color.spaceBlack', '原色钛金属': 'color.naturalTitanium', '冰川蓝': 'color.glacierBlue', '午夜色': 'color.midnight', '星光色': 'color.starlight', '天蓝色': 'color.skyBlue', '紫色': 'color.purple', '亮黑色': 'color.jetBlack', '玫瑰金': 'color.roseGold', '银色': 'color.silver', '白色': 'color.white', '石墨色': 'color.graphite', '雾蓝色': 'color.mistBlue', '46mm 蜂窝网络': 'variant.watchCellular' };
+  const variantKey = { '存储空间': 'color.storage', '内存与存储': 'color.memoryStorage', '表款': 'color.case', '款式': 'color.style' };
+  const productLabel = (product) => tr(productNameKey[Object.keys(productCatalog || {}).find((key) => productCatalog[key] === product)] || '', {}, product.name);
+  const localized = (value) => tr(colorKey[value] || variantKey[value] || '', {}, value);
+  const variantPartsFor = (item) => (item.variantParts || String(item.variant || '').split('·'))
+    .map((part) => String(part).trim().replace(/[·\s]+$/g, ''))
+    .filter(Boolean);
   document.body.classList.add('motion-ready');
   requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('page-ready')));
 
@@ -7,12 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   createIcons();
 
-  const formatPrice = new Intl.NumberFormat('zh-CN', {
-    style: 'currency',
-    currency: 'CNY',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  });
+  const formatPrice = { format: (value) => new Intl.NumberFormat((window.i18next?.getLanguage?.() || 'zh-CN') === 'en' ? 'en-US' : (window.i18next?.getLanguage?.() || 'zh-CN') === 'zh-TW' ? 'zh-TW' : 'zh-CN', { style: 'currency', currency: 'CNY', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value) };
   // localStorage keeps the bag isolated to this browser profile and site address.
   const storageKey = 'apple-inspired-cart-v3';
   const productCatalog = {
@@ -232,21 +237,25 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const createCartItem = (item) => {
+    const inferredProductKey = item.productKey || Object.keys(productCatalog).find((key) => String(item.name || '').toLowerCase().includes(key) || String(item.image || '').toLowerCase().includes(key));
+    const displayName = tr(productNameKey[inferredProductKey] || '', {}, item.name);
+    const variantParts = variantPartsFor(item);
+    const displayVariant = variantParts.map(localized).join(' · ');
     const article = document.createElement('article');
     article.className = 'cart-item';
 
     const image = document.createElement('img');
     image.src = item.image;
-    image.alt = item.name;
+    image.alt = displayName;
     image.width = 64;
     image.height = 64;
 
     const copy = document.createElement('div');
     copy.className = 'cart-copy';
     const name = document.createElement('strong');
-    name.textContent = item.name;
+    name.textContent = displayName;
     const variant = document.createElement('small');
-    variant.textContent = item.variant;
+    variant.textContent = displayVariant;
     copy.append(name, variant);
 
     const price = document.createElement('strong');
@@ -257,16 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
     actions.className = 'cart-actions';
     const quantity = document.createElement('div');
     quantity.className = 'qty-control';
-    quantity.setAttribute('aria-label', `${item.name} 数量`);
+    quantity.setAttribute('aria-label', `${displayName} ${tr('cart.quantity', {}, '数量')}`);
     const quantityText = document.createElement('span');
     quantityText.textContent = String(item.quantity);
     quantityText.setAttribute('aria-live', 'polite');
     quantity.append(
-      makeIconButton(`减少 ${item.name} 数量`, 'minus', 'decrease', item.id, item.quantity <= 1),
+      makeIconButton(tr('cart.decrease', { name: displayName }, `减少 ${displayName} 数量`), 'minus', 'decrease', item.id, item.quantity <= 1),
       quantityText,
-      makeIconButton(`增加 ${item.name} 数量`, 'plus', 'increase', item.id, item.quantity >= 9)
+      makeIconButton(tr('cart.increase', { name: displayName }, `增加 ${displayName} 数量`), 'plus', 'increase', item.id, item.quantity >= 9)
     );
-    actions.append(quantity, makeIconButton(`移除 ${item.name}`, 'trash-2', 'remove', item.id));
+    actions.append(quantity, makeIconButton(tr('cart.remove', { name: displayName }, `移除 ${displayName}`), 'trash-2', 'remove', item.id));
     article.append(image, copy, price, actions);
     return article;
   };
@@ -278,17 +287,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cart.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'empty-bag';
-      empty.innerHTML = '<i data-lucide="shopping-bag" aria-hidden="true"></i><strong>购物袋是空的</strong><p>从产品页选择喜欢的设备。</p>';
+      empty.innerHTML = `<i data-lucide="shopping-bag" aria-hidden="true"></i><strong>${tr('cart.empty', {}, '购物袋是空的')}</strong><p>${tr('cart.emptyHint', {}, '从产品页选择喜欢的设备。')}</p>`;
       bagItems.append(empty);
-      bagStatus.textContent = '还没有添加产品。';
+      bagStatus.textContent = tr('cart.noProducts', {}, '还没有添加产品。');
     } else {
       cart.forEach((item) => bagItems.append(createCartItem(item)));
-      bagStatus.textContent = `你的购物袋里有 ${totals.quantity} 件产品。`;
+      bagStatus.textContent = tr('cart.status', { count: totals.quantity }, `你的购物袋里有 ${totals.quantity} 件产品。`);
     }
 
     bagCount.textContent = String(totals.quantity);
     bagCount.hidden = totals.quantity === 0;
-    bagToggle.setAttribute('aria-label', `购物袋，${totals.quantity} 件产品`);
+    bagToggle.setAttribute('aria-label', tr('cart.aria', { count: totals.quantity }, `购物袋，${totals.quantity} 件产品`));
     bagSubtotal.textContent = formatPrice.format(totals.amount);
     checkoutBtn.disabled = cart.length === 0;
     checkoutBtn.setAttribute('aria-disabled', String(cart.length === 0));
@@ -299,15 +308,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderCheckoutSummary = () => {
     checkoutItems.replaceChildren();
     cart.forEach((item) => {
+      const inferredProductKey = item.productKey || Object.keys(productCatalog).find((key) => String(item.name || '').toLowerCase().includes(key) || String(item.image || '').toLowerCase().includes(key));
+      const displayName = tr(productNameKey[inferredProductKey] || '', {}, item.name);
+      const variantParts = variantPartsFor(item);
+      const displayVariant = variantParts.map(localized).join(' · ');
       const line = document.createElement('div');
       line.className = 'checkout-line';
       const image = document.createElement('img');
       image.src = item.image;
       image.alt = '';
       const copy = document.createElement('span');
-      copy.textContent = item.name;
+      copy.textContent = displayName;
       const quantity = document.createElement('small');
-      quantity.textContent = `${item.variant} · 数量 ${item.quantity}`;
+      quantity.textContent = `${displayVariant}${displayVariant ? ' · ' : ''}${tr('cart.quantity', {}, '数量')} ${item.quantity}`;
       copy.append(quantity);
       const price = document.createElement('strong');
       price.textContent = formatPrice.format(item.price * item.quantity);
@@ -321,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.remove('open');
     mobileMenu.setAttribute('aria-hidden', 'true');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', '打开菜单');
+    menuToggle.setAttribute('aria-label', tr('nav.openMenu', {}, '打开菜单'));
     menuToggle.innerHTML = '<i data-lucide="menu" aria-hidden="true"></i>';
     createIcons();
   };
@@ -364,9 +377,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lastFocusedElement = trigger;
     closePanels();
     closeMenu();
-    serviceModalKicker.textContent = service.kicker;
-    serviceModalTitle.textContent = service.title;
-    serviceModalIntro.textContent = service.intro;
+    serviceModalKicker.textContent = tr(`service.${serviceKey}`, {}, service.kicker);
+    serviceModalTitle.textContent = tr(`service.${serviceKey}Title`, {}, service.title);
+    serviceModalIntro.textContent = translate(service.intro);
     const icon = document.createElement('i');
     icon.setAttribute('data-lucide', service.icon);
     icon.setAttribute('aria-hidden', 'true');
@@ -376,9 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const item = document.createElement('article');
       item.className = 'service-detail-item';
       const heading = document.createElement('h3');
-      heading.textContent = title;
+      heading.textContent = translate(title);
       const paragraph = document.createElement('p');
-      paragraph.textContent = copy;
+      paragraph.textContent = translate(copy);
       item.append(heading, paragraph);
       serviceDetailList.append(item);
     });
@@ -401,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const color = product.colors[selectedColorIndex];
     const variant = product.variants[selectedVariantIndex];
     productConfigPrice.textContent = formatPrice.format(variant.price);
-    productConfigImage.alt = `${product.name} ${color.label}`;
+    productConfigImage.alt = `${product.name} ${localized(color.label)}`;
     productConfigImage.dataset.product = selectedProductKey;
     productConfigImage.dataset.color = color.slug;
   };
@@ -411,16 +424,16 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedProductKey = productKey;
     selectedColorIndex = 0;
     selectedVariantIndex = 0;
-    productModalKicker.textContent = `选购 ${product.name}`;
-    productModalTitle.textContent = `配置你的 ${product.name}`;
+    productModalKicker.textContent = tr('config.shop', { name: tr(productNameKey[productKey], {}, product.name) }, `选购 ${product.name}`);
+    productModalTitle.textContent = tr('config.title', { name: tr(productNameKey[productKey], {}, product.name) }, `配置你的 ${product.name}`);
     productBadge.textContent = product.badge;
     productConfigImage.src = product.image;
-    productVisualCopy.textContent = product.visualCopy;
-    productVariantLabel.textContent = product.variantLabel;
-    productConfigName.textContent = product.name;
-    productModalClose.setAttribute('aria-label', `关闭 ${product.name} 购买配置`);
-    productColorOptions.setAttribute('aria-label', `选择 ${product.name} 颜色`);
-    productVariantOptions.setAttribute('aria-label', `选择 ${product.name} ${product.variantLabel}`);
+    productVisualCopy.textContent = translate(product.visualCopy);
+    productVariantLabel.textContent = localized(product.variantLabel);
+    productConfigName.textContent = tr(productNameKey[productKey], {}, product.name);
+    productModalClose.setAttribute('aria-label', `${tr('common.close', {}, '关闭')} ${product.name}`);
+    productColorOptions.setAttribute('aria-label', tr('config.chooseColor', { name: product.name }, `选择 ${product.name} 颜色`));
+    productVariantOptions.setAttribute('aria-label', tr('config.chooseVariant', { name: product.name, variant: localized(product.variantLabel) }, `选择 ${product.name} ${product.variantLabel}`));
     productColorOptions.replaceChildren();
     productVariantOptions.replaceChildren();
 
@@ -429,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.type = 'button';
       button.className = `config-option${index === 0 ? ' selected' : ''}`;
       button.setAttribute('aria-pressed', String(index === 0));
-      button.innerHTML = `<span class="color-dot" style="--option-color:${color.value}"></span><span>${color.label}</span><i data-lucide="check" aria-hidden="true"></i>`;
+      button.innerHTML = `<span class="color-dot" style="--option-color:${color.value}"></span><span>${localized(color.label)}</span><i data-lucide="check" aria-hidden="true"></i>`;
       button.addEventListener('click', () => {
         selectedColorIndex = index;
         [...productColorOptions.children].forEach((option, optionIndex) => {
@@ -447,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.type = 'button';
       button.className = `storage-option${index === 0 ? ' selected' : ''}`;
       button.setAttribute('aria-pressed', String(index === 0));
-      button.innerHTML = `<strong>${variant.label}</strong><span>${formatPrice.format(variant.price)}</span>`;
+      button.innerHTML = `<strong>${localized(variant.label)}</strong><span>${formatPrice.format(variant.price)}</span>`;
       button.addEventListener('click', () => {
         selectedVariantIndex = index;
         [...productVariantOptions.children].forEach((option, optionIndex) => {
@@ -509,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('open', open);
     mobileMenu.setAttribute('aria-hidden', String(!open));
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+    menuToggle.setAttribute('aria-label', tr(open ? 'nav.closeMenu' : 'nav.openMenu', {}, open ? '关闭菜单' : '打开菜单'));
     menuToggle.innerHTML = open ? '<i data-lucide="x" aria-hidden="true"></i>' : '<i data-lucide="menu" aria-hidden="true"></i>';
     createIcons();
   });
@@ -525,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (button.dataset.action === 'decrease') item.quantity = Math.max(1, item.quantity - 1);
     if (button.dataset.action === 'remove') {
       cart = cart.filter((entry) => entry.id !== item.id);
-      showToast(`${item.name} 已从购物袋移除`);
+      showToast(tr('cart.removed', { name: item.name }, `${item.name} 已从购物袋移除`));
     }
     renderCart();
   });
@@ -538,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const formData = new FormData(checkoutForm);
     const name = String(formData.get('name') || '').trim();
-    document.querySelector('#successName').textContent = name || '朋友';
+    document.querySelector('#successName').textContent = name || tr('checkout.friend', {}, '朋友');
     document.querySelector('#orderNumber').textContent = `#AP${String(Date.now()).slice(-8)}`;
     checkoutContent.hidden = true;
     checkoutSuccess.hidden = false;
@@ -570,6 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cart.push({
         id,
         name: product.name,
+        productKey: selectedProductKey,
+        variantParts: [color.label, variant.label],
         variant: `${color.label} · ${variant.label}`,
         price: variant.price,
         quantity: 1,
@@ -581,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bagPanel.classList.add('open');
     bagPanel.setAttribute('aria-hidden', 'false');
     bagToggle.setAttribute('aria-expanded', 'true');
-    showToast(`${product.name} ${variant.label} 已加入购物袋`);
+    showToast(tr('cart.added', { name: tr(productNameKey[selectedProductKey], {}, product.name), variant: `${localized(color.label)} · ${variant.label}` }, `${product.name} ${variant.label} 已加入购物袋`));
   });
 
   document.addEventListener('keydown', (event) => {
@@ -606,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (direction > 0) target = atEnd ? 0 : Math.min(maxScroll, rail.scrollLeft + rail.clientWidth * .72);
     else target = atStart ? maxScroll : Math.max(0, rail.scrollLeft - rail.clientWidth * .72);
     rail.scrollTo({ left: target, behavior: wraps ? 'auto' : 'smooth' });
-    railStatus.textContent = target === 0 ? '已回到第一组产品' : target === maxScroll ? '已到最后一组产品' : '已切换产品';
+    railStatus.textContent = translate(target === 0 ? '已回到第一组产品' : target === maxScroll ? '已到最后一组产品' : '已切换产品');
   };
   document.querySelector('#railNext').addEventListener('click', () => moveRail(1));
   document.querySelector('#railPrev').addEventListener('click', () => moveRail(-1));
@@ -630,10 +645,10 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedAirpodsColor = swatch.dataset.color;
       const option = airpodsOptions[selectedAirpodsColor];
       airpodsPrice.textContent = formatPrice.format(option.price);
-      airpodsColorLabel.textContent = option.label;
+      airpodsColorLabel.textContent = localized(option.label);
       airpodsVisual.dataset.color = selectedAirpodsColor;
       airpodsImage.dataset.color = selectedAirpodsColor;
-      airpodsImage.alt = `AirPods Pro 3 ${option.label}耳机`;
+      airpodsImage.alt = `${tr('products.airpods', {}, 'AirPods Pro 3')} ${localized(option.label)}`;
     });
   });
 
@@ -647,6 +662,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cart.push({
         id,
         name: 'AirPods Pro 3',
+        productKey: 'airpods',
+        variantParts: [option.label],
         variant: option.label,
         price: option.price,
         quantity: 1,
@@ -654,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     renderCart();
-    showToast(`AirPods Pro 3 ${option.label}已加入购物袋`);
+    showToast(tr('cart.added', { name: tr('products.airpods', {}, 'AirPods Pro 3'), variant: localized(option.label) }, `AirPods Pro 3 ${option.label}已加入购物袋`));
   });
 
   const revealGroups = [
@@ -689,6 +706,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateHeader, { passive: true });
 
   renderCart();
+  document.addEventListener('i18n:rendered', () => {
+    renderCart();
+    if (productModal?.classList.contains('open')) renderProductConfigurator(selectedProductKey);
+  });
 
   const requestedProduct = new URLSearchParams(window.location.search).get('buy');
   if (requestedProduct && productCatalog[requestedProduct]) {
