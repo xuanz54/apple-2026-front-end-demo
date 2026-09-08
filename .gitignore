@@ -1,0 +1,26 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local development artifacts
+.tmp-*/
+*.log
+coverage/
+dist/
+build/
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+
+# Keep generated screenshots that are intentionally documented in Git
+!docs/screenshots/
+!docs/screenshots/*.png

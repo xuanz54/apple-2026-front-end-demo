@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const colorKey = { '深空黑': 'color.spaceBlack', '原色钛金属': 'color.naturalTitanium', '冰川蓝': 'color.glacierBlue', '午夜色': 'color.midnight', '星光色': 'color.starlight', '天蓝色': 'color.skyBlue', '紫色': 'color.purple', '亮黑色': 'color.jetBlack', '玫瑰金': 'color.roseGold', '银色': 'color.silver', '白色': 'color.white', '石墨色': 'color.graphite', '雾蓝色': 'color.mistBlue', '46mm 蜂窝网络': 'variant.watchCellular' };
   const variantKey = { '存储空间': 'color.storage', '内存与存储': 'color.memoryStorage', '表款': 'color.case', '款式': 'color.style' };
   const productLabel = (product) => tr(productNameKey[Object.keys(productCatalog || {}).find((key) => productCatalog[key] === product)] || '', {}, product.name);
-  const localized = (value) => tr(colorKey[value] || variantKey[value] || '', {}, value);
+  const localized = (value) => {
+    const key = colorKey[value] || variantKey[value];
+    return key ? tr(key, {}, value) : translate(value);
+  };
   const variantPartsFor = (item) => (item.variantParts || String(item.variant || '').split('·'))
     .map((part) => String(part).trim().replace(/[·\s]+$/g, ''))
     .filter(Boolean);
