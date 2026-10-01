@@ -1,6 +1,6 @@
 # Apple 2026 Front-end Demo
 
-一个以 Apple 官网为设计参考的纯前端学习项目。项目使用原生 HTML、CSS 与 JavaScript 构建，不依赖构建工具或后端服务，重点演示产品展示、站内购买配置、购物袋、本地化和响应式交互如何协同工作。
+一个以 Apple 官网为设计参考的纯前端学习项目。项目使用原生 HTML、CSS 与 JavaScript 构建，不依赖构建工具或后端服务，重点演示 2026 产品阵容展示、站内购买配置、购物袋、本地化和响应式交互如何协同工作。
 
 > 本项目是独立的前端学习演示，不是 Apple 官方网站，也不代表 Apple Inc.。产品名称、商标和视觉参考归其各自权利人所有。
 
@@ -13,7 +13,7 @@
 
 ### 首页
 
-首页以大幅产品视觉作为首屏入口，包含产品导航、滚动显现、产品横向浏览、外观预览、服务信息和站内购买入口。
+首页以 iPhone 18 Pro 的大幅产品视觉作为首屏入口，展示 iPhone Duo、MacBook Air M5、iPad Pro M5、Apple Watch Series 12 和 AirPods 5，并包含产品导航、滚动显现、产品横向浏览、外观预览、服务信息和站内购买入口。
 
 ![首页展示](docs/screenshots/home.png)
 
@@ -31,7 +31,7 @@
 
 ### 产品详情页
 
-每个产品都有独立的详情页，沿用统一的详情页骨架，同时保留产品自己的视觉重点、核心指标、家族导航和购买入口。
+六个产品都有独立的详情页，沿用统一的详情页骨架，同时保留产品自己的视觉重点、核心指标、家族导航和购买入口。下面的截图均来自当前 2026 产品版本，不再使用旧的 iPhone 17 展示图。
 
 <table>
   <tr>
@@ -44,7 +44,11 @@
   </tr>
   <tr>
     <td><strong>AirPods 5</strong><br><img src="docs/screenshots/airpods-detail.png" alt="AirPods 5 详情页" width="100%"></td>
-    <td><strong>移动端首页</strong><br><img src="docs/screenshots/mobile-home.png" alt="移动端首页" width="100%"></td>
+    <td><strong>iPhone Duo</strong><br><img src="docs/screenshots/iphone-duo-detail.png" alt="iPhone Duo 详情页" width="100%"></td>
+  </tr>
+  <tr>
+    <td><strong>移动端首页</strong><br><img src="docs/screenshots/mobile-home.png" alt="当前 2026 产品阵容的移动端首页" width="100%"></td>
+    <td></td>
   </tr>
 </table>
 
@@ -157,7 +161,7 @@ node --check i18n.js
 git diff --check
 ```
 
-手动检查：首页、五个产品详情页、产品比较页、支持页、理念页和隐私页分别切换简体中文、繁體中文与 English；验证购买配置、购物袋数量修改、删除、结账和模拟下单流程；在桌面端与 375px 左右的移动端检查无横向溢出。
+手动检查：首页、六个产品详情页、产品比较页、支持页、理念页和隐私页分别切换简体中文、繁體中文与 English；验证购买配置、购物袋数量修改、删除、结账和模拟下单流程；在桌面端与 375px 左右的移动端检查无横向溢出。
 
 ## 版权与免责声明
 
