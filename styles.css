@@ -72,3 +72,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #2997
 .compare-callout:hover .compare-products img:nth-child(3){transform:translateY(-9px)}
 @media(max-width:800px){.compare-callout{grid-template-columns:1fr;margin:18px 12px;padding:64px 20px 26px}.compare-copy{padding-left:0}.compare-products{min-height:245px;padding:20px 0 0}.compare-products img{height:220px}}
 @media(prefers-reduced-motion:reduce){.site-header,.motion-ready .hero-content>*,.motion-ready .hero-img,.reveal,.reveal-item,.product-card img,.text-link svg,.primary-btn svg,.compare-products img{transition:none!important;animation:none!important}.motion-ready .hero-content>*,.reveal,.reveal-item{opacity:1;transform:none}.motion-ready .hero-img,.product-card:hover img,.product-card:focus-within img,.compare-callout:hover .compare-products img{transform:none}}
+
+/* Keep product copy and imagery in separate readable areas. */
+.product-card{display:flex;flex-direction:column}
+.product-card .card-copy{flex:0 0 auto}
+.product-card img{position:relative;inset:auto;width:100%;height:auto;min-height:0;flex:1 1 auto;margin-top:14px;object-fit:contain;object-position:center bottom}
+.product-card .card-copy>p:not(.eyebrow){color:#55555b;opacity:1}
+.dark-card .card-copy>p:not(.eyebrow){color:#d0d0d4}
+.dark-card img{height:auto;opacity:1}
+.silver-card img,.sky-card img,.blush-card img{height:auto;mix-blend-mode:normal;opacity:1}
+@media(max-width:800px){.product-card img{margin-top:18px}.product-card .card-copy{padding-bottom:20px}}
