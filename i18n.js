@@ -38,6 +38,111 @@
   };
 
   Object.assign(en, {
+    'iPhone 18 Pro': 'iPhone 18 Pro',
+    'iPhone Duo': 'iPhone Duo',
+    'Apple Watch Series 12': 'Apple Watch Series 12',
+    'iPad Pro M5': 'iPad Pro M5',
+    'AirPods 5': 'AirPods 5',
+    '全新 iPhone 18 Pro': 'The new iPhone 18 Pro',
+    '主导航': 'Main navigation',
+    '页脚导航': 'Footer navigation',
+    '页面导航': 'Page navigation',
+    '首款可折叠 iPhone，': 'The first foldable iPhone,',
+    '展开展开就是迄今最大显示屏。': 'unfolds into the biggest iPhone display ever.',
+    '512GB 存储起步。': '512GB of storage starts the lineup.',
+    'S11 芯片与先进健康感测，': 'S11 chip and advanced health sensing,',
+    '最长 24 小时续航。': 'up to 24 hours of battery life.',
+    'M5 芯片与轻薄设计，': 'M5 chip and a thin, light design,',
+    '为专业创作而生。': 'made for professional creation.',
+    '白色 AirPods 5': 'White AirPods 5',
+    'AirPods 5 外观': 'AirPods 5 finish',
+    'iPhone Duo 可折叠设计': 'iPhone Duo foldable design',
+    'iPhone 18 Pro Pro Fusion 相机系统': 'iPhone 18 Pro Pro Fusion camera system',
+    'iPad Pro M5': 'iPad Pro M5',
+    'Apple Watch Series 12': 'Apple Watch Series 12',
+    'Pro 再超前。': 'Pro. Beyond.',
+    'A20 Pro 芯片，4800 万像素 Pro Fusion 相机，': 'A20 Pro chip and a 48MP Pro Fusion camera,',
+    '把 Pro 级创作力装进口袋。': 'put pro-level creativity in your pocket.',
+    'A20 Pro 芯片、4800 万像素 Pro Fusion 相机与可变光圈，把旗舰性能和影像创作推进新一程。': 'A20 Pro, a 48MP Pro Fusion camera and a variable aperture push pro performance and visual creation further.',
+    'A20 Pro · 首款可折叠 iPhone': 'A20 Pro · The first foldable iPhone',
+    'iPhone 18 Pro 将 A20 Pro 芯片、可变光圈和 4800 万像素 Pro Fusion 相机系统装进精密机身。': 'iPhone 18 Pro packs A20 Pro, a variable aperture and a 48MP Pro Fusion camera system into a precisely crafted design.',
+    'A20 Pro 与 Pro Fusion 相机，': 'A20 Pro and the Pro Fusion camera,',
+    '首款可折叠 iPhone': 'The first foldable iPhone',
+    '折叠，': 'Folded,',
+    '打开新可能。': 'opens new possibilities.',
+    '展开就是迄今最大显示屏。': 'unfolds into the biggest iPhone display ever.',
+    'iPhone 18 Pro 的 A20 Pro 芯片与 4800 万像素 Pro Fusion 相机系统。': 'the iPhone 18 Pro with its A20 Pro chip and 48MP Pro Fusion camera system.',
+    'Pro，再超前。': 'Pro. Beyond.',
+    '2 纳米制程与先进散热，为高强度创作提供动力': '2-nanometer performance and advanced thermal management power demanding creation.',
+    '4800 万像素': '48MP',
+    'Pro Fusion 相机系统与可变光圈，捕捉更多细节': 'The Pro Fusion camera system and variable aperture capture more detail.',
+    'iOS 27': 'iOS 27',
+    '新款 iPhone 18 Pro': 'The new iPhone 18 Pro',
+    '首款可折叠 iPhone。7.6 英寸内屏、5.4 英寸外屏、A20 Pro 芯片和钛金属铰链，展开即是全新体验。': 'The first foldable iPhone, with a 7.6-inch inner display, 5.4-inch outer display, A20 Pro and a titanium hinge.',
+    'Hello，hello。': 'Hello, hello.',
+    '一展开，': 'Unfold,',
+    '精彩就有更多打开方式。': 'and open up more ways to enjoy it.',
+    '可折叠设计': 'Foldable design',
+    'S11 芯片': 'S11 chip',
+    '精心代表作。': 'A carefully crafted classic.',
+    '主动降噪与自适应均衡': 'Active noise cancellation and Adaptive EQ',
+    '主动降噪与自适应均衡，让通勤、训练和远行都沉浸在自己的节奏里。': 'Active noise cancellation and Adaptive EQ keep commutes, workouts and journeys immersive.',
+    '自适应均衡': 'Adaptive EQ',
+    '重新设计的声学架构带来更饱满音效': 'A redesigned acoustic architecture brings richer sound',
+    '了解 iPhone Duo': 'Learn about iPhone Duo',
+    'iPhone Duo 页面导航': 'iPhone Duo page navigation',
+    '了解 iPhone 18 Pro、选择容量与颜色，或进入站内购买配置。': 'Learn about iPhone 18 Pro, choose storage and color, or open the on-site configurator.',
+    '了解 iPad Pro M5，以及适合学习、创作与多任务的配置。': 'Learn about iPad Pro M5 and configurations for study, creativity and multitasking.',
+    '了解主动降噪、自适应均衡和可预览的外观选项。': 'Learn about active noise cancellation, Adaptive EQ and available finishes.',
+    'RMB 15,999 起': 'From RMB 15,999',
+    'Unfold,': 'Unfold,',
+    '一展开，': 'Unfold,',
+    '精彩就有更多打开方式。': 'and open up more ways to enjoy it.',
+    '7.6 英寸': '7.6-inch',
+    '超视网膜 XDR 可折叠内屏，纳米纹理表层减少眩光': 'Super Retina XDR foldable inner display with a nano-texture surface that reduces glare',
+    '2 纳米制程与双电池架构，释放 Pro 级性能': '2-nanometer performance and a dual-battery design deliver pro-level power',
+    '融合式双摄系统，支持双屏预览与智能拍摄': 'A Fusion dual-camera system with Dual Screen Preview and Smart Capture',
+    '随心折叠': 'Fold your way',
+    '灵活摆，': 'Flexible positions,',
+    '放开双手。': 'hands-free.',
+    '横屏、竖屏、闭合或坐立，iOS 27 与双屏系统共同带来全新的多任务体验。': 'Landscape, portrait, closed or upright: iOS 27 and the dual-screen system create new ways to multitask.',
+    '听见，更大的世界。': 'Hear a bigger world.',
+    '主动降噪、重新设计的声学架构与自适应均衡，带来更饱满细腻的音效。': 'Active noise cancellation, a redesigned acoustic architecture and Adaptive EQ bring richer, more detailed sound.',
+    '声音与感受': 'Sound and comfort',
+    '1.5 倍': 'Up to 1.5x',
+    '主动降噪效果相较上一代进一步提升': 'Active noise cancellation is improved over the previous generation.',
+    '无耳塞设计': 'Open-ear design',
+    '戴久一点也舒适，连接 Apple 设备更顺畅': 'Comfortable for longer listening and seamless with Apple devices.',
+    'M5 芯片，专业实力。': 'M5 power for pro workflows.',
+    'M5 加持，轻装上阵。': 'M5 power. Ready to go.',
+    '轻盈机身装入 M5 芯片的强劲性能，512GB 存储起步，从日常工作到创意项目都能高效进入状态。': 'A light design packs M5 performance with 512GB starting storage, ready for focused work from everyday tasks to creative projects.',
+    '天蓝色 MacBook Air M5': 'Sky blue MacBook Air M5',
+    '极致轻薄的设计搭配 M5 芯片，为专业创作、学习和多任务处理带来充沛性能。': 'An ultra-thin design with M5 delivers ample performance for pro creation, learning and multitasking.',
+    '11 英寸或 13 英寸': '11-inch or 13-inch',
+    '256GB 起': '256GB starting storage',
+    'RMB 10,799 起': 'From RMB 10,799',
+    '大容量存储，适合专业创作与项目资料': 'Ample storage for pro creation and project files',
+    'A20 Pro 与 4800 万像素 Pro Fusion 相机系统。': 'A20 Pro with a 48MP Pro Fusion camera system.',
+    '7.6 英寸可折叠内屏，展开就是更大视野。': 'A 7.6-inch foldable inner display opens up a bigger view.',
+    '一块专业画布，展开创作与灵感。': 'A pro canvas for every idea.',
+    '先进健康感测': 'Advanced health sensing',
+    '准备指数、心率追踪与最长 24 小时续航。': 'Training Load, heart-rate tracking and up to 24 hours of battery life.',
+    '自适应均衡与无耳塞设计，舒适聆听。': 'Adaptive EQ and an open-ear design for comfortable listening.',
+    'RMB 9,999 起': 'From RMB 9,999',
+    'RMB 8,499 起': 'From RMB 8,499',
+    'RMB 7,999 起': 'From RMB 7,999',
+    'RMB 2,999 起': 'From RMB 2,999',
+    'RMB 999 起': 'From RMB 999',
+    '专业创作、学习与多任务': 'Pro creation, learning and multitasking',
+    '4800 万像素 Pro Fusion 相机系统': '48MP Pro Fusion camera system',
+    '512GB 存储与最长 18 小时续航': '512GB storage and up to 18 hours of battery life',
+    '精心代表作。': 'A carefully crafted classic.',
+    '全新健康感测系统、S11 芯片与更纤薄设计，帮助你了解身体状态，也时刻保持连接。': 'A new health sensing system, S11 chip and thinner design help you understand your body and stay connected.',
+    '24 小时': '24 hours',
+    '正常使用下的全天候电池续航': 'All-day battery life with normal use',
+    '更先进的心率感测与准备指数': 'More advanced heart sensing and a Training Load score',
+    'Apple Watch Series 12、Ultra 4 和其他表款': 'Apple Watch Series 12, Ultra 4 and other models',
+    '从 Series 12 到 Ultra 4 与 SE 3，多种尺寸、材质和表带，让功能与个人风格自然相遇。': 'From Series 12 to Ultra 4 and SE 3, sizes, materials and bands bring function and personal style together.',
     '谢谢，': 'Thank you, ',
     '。': '.',
     '了解全新 iPhone 17 Pro 的 A19 Pro 芯片与专业级相机系统。': 'Explore the new iPhone 17 Pro with the A19 Pro chip and pro camera system.',
@@ -107,7 +212,7 @@
     if (path.includes('/support')) return 'title.support';
     if (path.includes('/privacy')) return 'title.privacy';
     if (path.includes('/values')) return 'title.values';
-    for (const product of ['iphone', 'mac', 'ipad', 'watch', 'airpods']) if (path.includes(`/${product}`)) return `title.${product}`;
+    for (const product of ['iphone-duo', 'iphone', 'mac', 'ipad', 'watch', 'airpods']) if (path.includes(`/${product}`)) return `title.${product}`;
     return 'site.title';
   };
   const render = () => {
@@ -118,6 +223,13 @@
       if (attribute && key) element.setAttribute(attribute, t(key));
     }));
     renderTree();
+    const menuToggle = document.querySelector('#menuToggle');
+    if (menuToggle) menuToggle.setAttribute('aria-label', t(menuToggle.getAttribute('aria-expanded') === 'true' ? 'nav.closeMenu' : 'nav.openMenu'));
+    const bagToggle = document.querySelector('#bagToggle');
+    if (bagToggle) {
+      const count = document.querySelector('.bag-count')?.textContent || '0';
+      bagToggle.setAttribute('aria-label', t('cart.aria', { count }, `购物袋，${count} 件产品`));
+    }
     document.title = t(titleKey());
     document.querySelectorAll('meta[name="description"]').forEach((meta) => {
       if (!meta.dataset.i18nSource) meta.dataset.i18nSource = meta.content;

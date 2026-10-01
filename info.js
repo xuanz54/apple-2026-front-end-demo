@@ -38,11 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const comparisonData = {
-    iphone: { name: 'iPhone 17 Pro', image: '../assets/images/iphone-detail.png', price: 'RMB 8,999 起', chip: 'A19 Pro', use: '移动影像与高性能日常体验', portability: '口袋随身', feature: 'Pro Fusion 专业相机系统', detail: '../iphone/', buy: '../?buy=iphone' },
-    mac: { name: 'MacBook Air M5', image: '../assets/images/macbook-air-m5.jpg', price: 'RMB 7,999 起', chip: 'M5', use: '工作、学习与桌面级创作', portability: '轻盈笔记本', feature: '全天续航与 macOS 工作流', detail: '../mac/', buy: '../?buy=mac' },
-    ipad: { name: 'iPad Air M4', image: '../assets/images/ipad-air-m4.jpg', price: 'RMB 4,799 起', chip: 'M4', use: '手写、绘画与灵活多任务', portability: '轻薄大画布', feature: '支持 Apple Pencil Pro', detail: '../ipad/', buy: '../?buy=ipad' },
-    watch: { name: 'Apple Watch Series 11', image: '../assets/images/apple-watch-series-11.jpg', price: 'RMB 2,999 起', chip: 'Series 11 平台', use: '健康、运动与随身连接', portability: '腕上设备', feature: '全天候健康洞察', detail: '../watch/', buy: '../?buy=watch' },
-    airpods: { name: 'AirPods Pro 3', image: '../assets/images/airpods-pro-3.jpg', price: 'RMB 1,899 起', chip: '新一代音频平台', use: '通勤、训练与沉浸聆听', portability: '充电盒随身', feature: '主动降噪与心率感测', detail: '../airpods/', buy: '../?buy=airpods' }
+    iphone: { name: 'iPhone 18 Pro', image: '../assets/images/iphone-18-pro-hero.jpg', price: 'RMB 9,999 起', chip: 'A20 Pro', use: '移动影像与高性能日常体验', portability: '口袋随身', feature: '4800 万像素 Pro Fusion 相机系统', detail: '../iphone/', buy: '../?buy=iphone' },
+    duo: { name: 'iPhone Duo', image: '../assets/images/iphone-duo-hero.webp', price: 'RMB 15,999 起', chip: 'A20 Pro', use: '折叠多任务与沉浸娱乐', portability: '折叠随身', feature: '7.6 英寸可折叠内屏', detail: '../iphone-duo/', buy: '../?buy=duo' },
+    mac: { name: 'MacBook Air M5', image: '../assets/images/macbook-air-m5-hero.png', price: 'RMB 8,499 起', chip: 'M5', use: '工作、学习与桌面级创作', portability: '轻盈笔记本', feature: '512GB 存储与最长 18 小时续航', detail: '../mac/', buy: '../?buy=mac' },
+    ipad: { name: 'iPad Pro M5', image: '../assets/images/ipad-pro-m5-hero.jpg', price: 'RMB 10,799 起', chip: 'M5', use: '专业创作、学习与多任务', portability: '轻薄大画布', feature: '11 英寸或 13 英寸', detail: '../ipad/', buy: '../?buy=ipad' },
+    watch: { name: 'Apple Watch Series 12', image: '../assets/images/apple-watch-series-12-hero.webp', price: 'RMB 2,999 起', chip: 'S11', use: '健康、运动与随身连接', portability: '腕上设备', feature: '准备指数与高频心率追踪', detail: '../watch/', buy: '../?buy=watch' },
+    airpods: { name: 'AirPods 5', image: '../assets/images/airpods-5-hero.jpg', price: 'RMB 999 起', chip: 'H2', use: '通勤、训练与沉浸聆听', portability: '充电盒随身', feature: '主动降噪与自适应均衡', detail: '../airpods/', buy: '../?buy=airpods' }
   };
   const compareGrid = document.querySelector('#compareGrid');
   const compareNote = document.querySelector('#compareNote');

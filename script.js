@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const tr = (key, vars, fallback = key) => window.t ? window.t(key, vars) : fallback;
   const translate = (value) => window.translateText ? window.translateText(value) : value;
-  const productNameKey = { iphone: 'products.iphone', mac: 'products.mac', ipad: 'products.ipad', watch: 'products.watch', airpods: 'products.airpods' };
-  const colorKey = { '深空黑': 'color.spaceBlack', '原色钛金属': 'color.naturalTitanium', '冰川蓝': 'color.glacierBlue', '午夜色': 'color.midnight', '星光色': 'color.starlight', '天蓝色': 'color.skyBlue', '紫色': 'color.purple', '亮黑色': 'color.jetBlack', '玫瑰金': 'color.roseGold', '银色': 'color.silver', '白色': 'color.white', '石墨色': 'color.graphite', '雾蓝色': 'color.mistBlue', '46mm 蜂窝网络': 'variant.watchCellular' };
+  const productNameKey = { iphone: 'products.iphone', duo: 'products.duo', mac: 'products.mac', ipad: 'products.ipad', watch: 'products.watch', airpods: 'products.airpods' };
+  const colorKey = { '勃艮第酒红色': 'color.burgundy', '冰川蓝色': 'color.glacierBlueLight', '深空黑': 'color.spaceBlack', '原色钛金属': 'color.naturalTitanium', '冰川蓝': 'color.glacierBlue', '午夜色': 'color.midnight', '星光色': 'color.starlight', '天蓝色': 'color.skyBlue', '紫色': 'color.purple', '亮黑色': 'color.jetBlack', '黑色': 'color.black', '银色': 'color.silver', '白色': 'color.white', '星光白色': 'color.starlightWhite', '夜空色': 'color.nightSky', '深古铜色': 'color.darkBronze', '浅金色': 'color.lightGold', '深空灰色': 'color.spaceGray', '炫金色': 'color.gold', '石墨色': 'color.graphite', '雾蓝色': 'color.mistBlue', '46mm 蜂窝网络': 'variant.watchCellular' };
   const variantKey = { '存储空间': 'color.storage', '内存与存储': 'color.memoryStorage', '表款': 'color.case', '款式': 'color.style' };
   const productLabel = (product) => tr(productNameKey[Object.keys(productCatalog || {}).find((key) => productCatalog[key] === product)] || '', {}, product.name);
   const localized = (value) => {
@@ -25,21 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const storageKey = 'apple-inspired-cart-v3';
   const productCatalog = {
     iphone: {
-      name: 'iPhone 17 Pro',
-      badge: 'A19 PRO',
-      visualCopy: 'A19 Pro · 专业级 Pro Fusion 相机',
-      image: 'assets/images/iphone-detail.png',
-      cartImage: 'assets/images/iphone-detail.png',
+      name: 'iPhone 18 Pro',
+      badge: 'A20 PRO',
+      visualCopy: 'A20 Pro · 4800 万像素 Pro Fusion 相机',
+      image: 'assets/images/iphone-18-pro-hero.jpg',
+      cartImage: 'assets/images/iphone-18-pro-hero.jpg',
       variantLabel: '存储空间',
       colors: [
-        { label: '深空黑', slug: 'space-black', value: '#292b2e' },
-        { label: '原色钛金属', slug: 'natural-titanium', value: '#c8c0b3' },
-        { label: '冰川蓝', slug: 'glacier-blue', value: '#a9c6ce' }
+        { label: '勃艮第酒红色', slug: 'burgundy', value: '#5c1f2c' },
+        { label: '冰川蓝色', slug: 'glacier-blue', value: '#b7d0dc' },
+        { label: '银色', slug: 'silver', value: '#d8dadd' },
+        { label: '黑色', slug: 'black', value: '#1d1d1f' }
       ],
       variants: [
-        { label: '256GB', slug: '256gb', price: 8999 },
-        { label: '512GB', slug: '512gb', price: 10999 },
-        { label: '1TB', slug: '1tb', price: 12999 }
+        { label: '256GB', slug: '256gb', price: 9999 },
+        { label: '512GB', slug: '512gb', price: 11999 },
+        { label: '1TB', slug: '1tb', price: 13999 }
+      ]
+    },
+    duo: {
+      name: 'iPhone Duo',
+      badge: 'A20 PRO',
+      visualCopy: 'A20 Pro · 首款可折叠 iPhone',
+      image: 'assets/images/iphone-duo-hero.webp',
+      cartImage: 'assets/images/iphone-duo-hero.webp',
+      variantLabel: '存储空间',
+      colors: [
+        { label: '星光白色', slug: 'starlight-white', value: '#f4f1eb' },
+        { label: '夜空色', slug: 'night-sky', value: '#1d2735' }
+      ],
+      variants: [
+        { label: '256GB', slug: '256gb', price: 15999 },
+        { label: '512GB', slug: '512gb', price: 17999 },
+        { label: '1TB', slug: '1tb', price: 19999 },
+        { label: '2TB', slug: '2tb', price: 23999 }
       ]
     },
     mac: {
@@ -55,22 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: '天蓝色', slug: 'sky-blue', value: '#aabfc8' }
       ],
       variants: [
-        { label: '16GB + 256GB', slug: '16-256', price: 7999 },
-        { label: '16GB + 512GB', slug: '16-512', price: 9499 },
-        { label: '24GB + 512GB', slug: '24-512', price: 10999 }
+        { label: '16GB + 512GB', slug: '16-512', price: 8499 },
+        { label: '16GB + 1TB', slug: '16-1tb', price: 10499 },
+        { label: '24GB + 1TB', slug: '24-1tb', price: 12499 }
       ]
     },
     watch: {
-      name: 'Apple Watch Series 11',
-      badge: 'SERIES 11',
-      visualCopy: '全天候健康洞察 · 抬腕时刻在线',
-      image: 'assets/images/apple-watch-series-11.jpg',
-      cartImage: 'assets/images/apple-watch-series-11.jpg',
+      name: 'Apple Watch Series 12',
+      badge: 'SERIES 12',
+      visualCopy: 'S11 芯片 · 先进的健康与健身跟测',
+      image: 'assets/images/apple-watch-series-12-hero.webp',
+      cartImage: 'assets/images/apple-watch-series-12-hero.webp',
       variantLabel: '表款',
       colors: [
-        { label: '亮黑色', slug: 'jet-black', value: '#202124' },
-        { label: '玫瑰金', slug: 'rose-gold', value: '#d1a18e' },
-        { label: '银色', slug: 'silver', value: '#d8dadd' }
+        { label: '深古铜色', slug: 'dark-bronze', value: '#57463d' },
+        { label: '浅金色', slug: 'light-gold', value: '#d9c8a7' },
+        { label: '黑色', slug: 'black', value: '#202124' },
+        { label: '深空灰色', slug: 'space-gray', value: '#777980' },
+        { label: '原色钛金属', slug: 'natural-titanium', value: '#c8c0b3' }
       ],
       variants: [
         { label: '42mm GPS', slug: '42-gps', price: 2999 },
@@ -79,37 +100,36 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     ipad: {
-      name: 'iPad Air M4',
-      badge: 'M4',
-      visualCopy: 'M4 强劲性能 · 轻盈多彩设计',
-      image: 'assets/images/ipad-air-m4.jpg',
-      cartImage: 'assets/images/ipad-air-m4.jpg',
+      name: 'iPad Pro M5',
+      badge: 'M5',
+      visualCopy: 'M5 芯片 · 轻薄专业创作',
+      image: 'assets/images/ipad-pro-m5-hero.jpg',
+      cartImage: 'assets/images/ipad-pro-m5-hero.jpg',
       variantLabel: '存储空间',
       colors: [
-        { label: '天蓝色', slug: 'sky-blue', value: '#b9d1dc' },
-        { label: '紫色', slug: 'purple', value: '#c6bdd7' },
-        { label: '星光色', slug: 'starlight', value: '#e3ded2' }
+        { label: '深空黑', slug: 'space-black', value: '#1d1d1f' },
+        { label: '银色', slug: 'silver', value: '#d8dadd' }
       ],
       variants: [
-        { label: '128GB', slug: '128gb', price: 4799 },
-        { label: '256GB', slug: '256gb', price: 5799 },
-        { label: '512GB', slug: '512gb', price: 7499 }
+        { label: '256GB', slug: '256gb', price: 10799 },
+        { label: '512GB', slug: '512gb', price: 11999 },
+        { label: '1TB', slug: '1tb', price: 14399 },
+        { label: '2TB', slug: '2tb', price: 19199 }
       ]
     },
     airpods: {
-      name: 'AirPods Pro 3',
-      badge: 'PRO 3',
-      visualCopy: '更强主动降噪 · 运动心率感测',
-      image: 'assets/images/airpods-pro-3.jpg',
-      cartImage: 'assets/images/airpods-pro-3.jpg',
+      name: 'AirPods 5',
+      badge: 'AIRPODS 5',
+      visualCopy: '主动降噪 · 自适应均衡',
+      image: 'assets/images/airpods-5-hero.jpg',
+      cartImage: 'assets/images/airpods-5-hero.jpg',
       variantLabel: '款式',
       colors: [
-        { label: '白色', slug: 'white', value: '#f5f5f2' },
-        { label: '石墨色', slug: 'graphite', value: '#65696f' },
-        { label: '雾蓝色', slug: 'mist-blue', value: '#9db6c9' }
+        { label: '白色', slug: 'white', value: '#f5f5f2' }
       ],
       variants: [
-        { label: 'AirPods Pro 3', slug: 'pro-3', price: 1899 }
+        { label: 'AirPods 5', slug: 'airpods-5', price: 999 },
+        { label: 'AirPods 5 (配无线充电盒)', slug: 'airpods-5-wireless', price: 1149 }
       ]
     }
   };
@@ -579,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const color = product.colors[selectedColorIndex];
     const variant = product.variants[selectedVariantIndex];
     const isDefaultIphone = selectedProductKey === 'iphone' && selectedColorIndex === 0 && selectedVariantIndex === 0;
-    const id = isDefaultIphone ? 'iphone-17-pro' : `${selectedProductKey}-${color.slug}-${variant.slug}`;
+    const id = isDefaultIphone ? 'iphone-18-pro' : `${selectedProductKey}-${color.slug}-${variant.slug}`;
     const existing = cart.find((item) => item.id === id);
     if (existing) existing.quantity = Math.min(9, existing.quantity + 1);
     else {
@@ -630,9 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#railPrev').addEventListener('click', () => moveRail(-1));
 
   const airpodsOptions = {
-    white: { label: '白色', price: 1899 },
-    graphite: { label: '石墨色', price: 1899 },
-    'mist-blue': { label: '雾蓝色', price: 1899 }
+    white: { label: '白色', price: 999 }
   };
   const airpodsVisual = document.querySelector('.airpods-visual');
   const airpodsImage = document.querySelector('#airpodsImage');
@@ -651,7 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
       airpodsColorLabel.textContent = localized(option.label);
       airpodsVisual.dataset.color = selectedAirpodsColor;
       airpodsImage.dataset.color = selectedAirpodsColor;
-      airpodsImage.alt = `${tr('products.airpods', {}, 'AirPods Pro 3')} ${localized(option.label)}`;
+      airpodsImage.alt = `${tr('products.airpods', {}, 'AirPods 5')} ${localized(option.label)}`;
     });
   });
 
@@ -664,17 +682,17 @@ document.addEventListener('DOMContentLoaded', () => {
     else {
       cart.push({
         id,
-        name: 'AirPods Pro 3',
+        name: 'AirPods 5',
         productKey: 'airpods',
         variantParts: [option.label],
         variant: option.label,
         price: option.price,
         quantity: 1,
-        image: 'assets/images/airpods-pro-3.jpg'
+        image: 'assets/images/airpods-5-hero.jpg'
       });
     }
     renderCart();
-    showToast(tr('cart.added', { name: tr('products.airpods', {}, 'AirPods Pro 3'), variant: localized(option.label) }, `AirPods Pro 3 ${option.label}已加入购物袋`));
+    showToast(tr('cart.added', { name: tr('products.airpods', {}, 'AirPods 5'), variant: localized(option.label) }, `AirPods 5 ${option.label}已加入购物袋`));
   });
 
   const revealGroups = [

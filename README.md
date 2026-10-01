@@ -35,15 +35,15 @@
 
 <table>
   <tr>
-    <td><strong>iPhone 17 Pro</strong><br><img src="docs/screenshots/iphone-detail.png" alt="iPhone 17 Pro 详情页" width="100%"></td>
+    <td><strong>iPhone 18 Pro</strong><br><img src="docs/screenshots/iphone-detail.png" alt="iPhone 18 Pro 详情页" width="100%"></td>
     <td><strong>MacBook Air M5</strong><br><img src="docs/screenshots/mac-detail.png" alt="MacBook Air M5 详情页" width="100%"></td>
   </tr>
   <tr>
-    <td><strong>iPad Air M4</strong><br><img src="docs/screenshots/ipad-detail.png" alt="iPad Air M4 详情页" width="100%"></td>
-    <td><strong>Apple Watch Series 11</strong><br><img src="docs/screenshots/watch-detail.png" alt="Apple Watch Series 11 详情页" width="100%"></td>
+    <td><strong>iPad Pro M5</strong><br><img src="docs/screenshots/ipad-detail.png" alt="iPad Pro M5 详情页" width="100%"></td>
+    <td><strong>Apple Watch Series 12</strong><br><img src="docs/screenshots/watch-detail.png" alt="Apple Watch Series 12 详情页" width="100%"></td>
   </tr>
   <tr>
-    <td><strong>AirPods Pro 3</strong><br><img src="docs/screenshots/airpods-detail.png" alt="AirPods Pro 3 详情页" width="100%"></td>
+    <td><strong>AirPods 5</strong><br><img src="docs/screenshots/airpods-detail.png" alt="AirPods 5 详情页" width="100%"></td>
     <td><strong>移动端首页</strong><br><img src="docs/screenshots/mobile-home.png" alt="移动端首页" width="100%"></td>
   </tr>
 </table>
@@ -66,7 +66,7 @@
 ## 功能特性
 
 - Apple 风格的顶部导航、产品卡片、留白比例、圆角面板和克制的动效。
-- iPhone 17 Pro、MacBook Air M5、iPad Air M4、Apple Watch Series 11、AirPods Pro 3 五类产品展示。
+- iPhone 18 Pro、iPhone Duo、MacBook Air M5、iPad Pro M5、Apple Watch Series 12、AirPods 5 六类产品展示。
 - 产品详情页、产品比较页、支持页、设计理念页和隐私说明页。
 - 站内购买配置：颜色、容量、内存与存储、表款和产品款式均可选择。
 - 购物袋：加入商品、修改数量、删除商品、查看小计和模拟结账。
@@ -94,11 +94,12 @@
 ├── locales/                   # zh-CN、zh-TW、en 语言资源
 ├── vendor/                    # 固定版本的本地第三方浏览器包
 ├── assets/                    # Apple 标志和产品图片
-├── iphone/                    # iPhone 17 Pro 详情页
+├── iphone/                    # iPhone 18 Pro 详情页
+├── iphone-duo/                # iPhone Duo 折叠屏详情页
 ├── mac/                       # MacBook Air M5 详情页
-├── ipad/                      # iPad Air M4 详情页
-├── watch/                     # Apple Watch Series 11 详情页
-├── airpods/                   # AirPods Pro 3 详情页
+├── ipad/                      # iPad Pro M5 详情页
+├── watch/                     # Apple Watch Series 12 详情页
+├── airpods/                   # AirPods 5 详情页
 ├── products/                  # 产品比较页
 ├── support/                   # 支持页
 ├── values/                    # 设计理念页
